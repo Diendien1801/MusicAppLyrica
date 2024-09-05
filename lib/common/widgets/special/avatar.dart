@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -13,6 +12,7 @@ import 'package:lyrica_ver2/features/personalization/controllers/user_controller
 
 import 'package:lyrica_ver2/features/personalization/screens/personal.dart';
 
+// ignore: must_be_immutable
 class Avatar extends StatelessWidget {
   double height;
   double width;

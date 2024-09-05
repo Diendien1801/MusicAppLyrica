@@ -1,16 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class LoginButtonSocial extends StatelessWidget {
   String text;
   String logo;
   Color? color;
   LoginButtonSocial({
-    Key? key,
+    super.key,
     required this.text,
     required this.logo,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +29,19 @@ class LoginButtonSocial extends StatelessWidget {
           Positioned(
             left: 20,
             top: 14,
-            child: Container(
+            child: SizedBox(
+              height: 25,
+              width: 25,
               child: Image.asset(
                 logo,
                 color: color,
               ),
-              height: 25,
-              width: 25,
             ),
           ),
           Positioned(
             top: 14,
             left: 60,
-            child: Container(
+            child: SizedBox(
               width: 260,
               child: Center(
                 child: Text(

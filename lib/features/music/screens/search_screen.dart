@@ -1,27 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:lyrica_ver2/common/widgets/popup_music/popup_music.dart';
 import 'package:lyrica_ver2/common/widgets/search/search_bar.dart';
 import 'package:lyrica_ver2/common/widgets/song_cover/song_cover_horizontal.dart';
-import 'package:lyrica_ver2/common/widgets/song_cover/song_cover_vertical.dart';
 import 'package:lyrica_ver2/common/widgets/special/group_of_playlist.dart';
 import 'package:lyrica_ver2/features/music/controllers/search_controller.dart';
-import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 
 class SearchScreen extends StatelessWidget {
   final searchController = Get.put(SearchingController());
+
+  SearchScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -63,7 +61,7 @@ class SearchScreen extends StatelessWidget {
                     child: MySearchBar(),
                   ),
                   Obx(
-                    () => Container(
+                    () => SizedBox(
                       height: 980,
                       width: MediaQuery.of(context).size.width,
                       child: searchController.showListView.value
@@ -75,7 +73,8 @@ class SearchScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(top: 16, left: 6),
+                                    margin:
+                                        const EdgeInsets.only(top: 16, left: 6),
                                     height: 20,
                                     width: 140,
                                     child: Text("Recent search",
@@ -132,8 +131,8 @@ class SearchScreen extends StatelessWidget {
             bottom: 10,
             left: 26,
             child: ClipRRect(
-                child: PopUpMusic(),
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: PopUpMusic()),
           ),
         ],
       ),

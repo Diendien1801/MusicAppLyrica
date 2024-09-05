@@ -187,11 +187,10 @@ class TrackView extends StatelessWidget {
                         trackViewController.duration.value.inSeconds.toDouble(),
                     value:
                         trackViewController.position.value.inSeconds.toDouble(),
-                    
+
                     onChanged: (double value) {
                       final position = Duration(seconds: value.toInt());
                       TrackViewController.to.seek(position);
-                      
                     },
                     activeColor: Colors
                         .white, // Change this to your desired active color
@@ -272,19 +271,34 @@ class TrackView extends StatelessWidget {
                               .url);
                         },
                         child: Container(
-                          margin: EdgeInsets.only(left: 40, right: 40),
-                          child: trackViewController.playButton.value
-                              ? Image.asset(
-                                  'assets/icons/stop.png',
-                                  color: Colors.white,
-                                  width: 70,
-                                )
-                              : Image.asset(
-                                  'assets/icons/play_button.png',
-                                  color: Colors.white,
-                                  width: 70,
-                                ),
-                        ),
+                            margin: EdgeInsets.only(left: 40, right: 40),
+                            child: trackViewController.playButton.value
+                                ? Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Icon(
+                                      Icons.pause,
+                                      color: Colors.black,
+                                      size: 45,
+                                    ),
+                                  )
+                                : Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: const Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.black,
+                                      size: 45,
+                                    ),
+                                  )),
                       ),
                     ),
 

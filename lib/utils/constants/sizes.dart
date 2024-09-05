@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+
 class TSizes {
   // Padding and margin sizes
   static const double xs = 4.0;
@@ -66,4 +69,8 @@ class TSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  static double get screenHeight => MediaQuery.of(Get.context!).size.height;
+  
+  static double get screenWidth => MediaQuery.of(Get.context!).size.width;
 }

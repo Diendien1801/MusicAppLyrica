@@ -1,19 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class PremiumPack extends StatelessWidget {
   bool isBestChoice;
   String title;
   String price;
 
   PremiumPack(
-      {required this.isBestChoice, required this.title, required this.price});
+      {super.key, required this.isBestChoice, required this.title, required this.price});
 
   @override
   Widget build(BuildContext context) {
     if (isBestChoice) {
-      return Container(
+      return SizedBox(
         height: 80,
         child: Stack(
           children: [
@@ -24,10 +23,10 @@ class PremiumPack extends StatelessWidget {
                 height: 60,
                 width: 350,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(163, 119, 255, 0.4),
+                  color: const Color.fromRGBO(163, 119, 255, 0.4),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: Color.fromRGBO(218, 0, 255, 1),
+                    color: const Color.fromRGBO(218, 0, 255, 1),
                     width: 2,
                   ),
                 ),
@@ -72,7 +71,7 @@ class PremiumPack extends StatelessWidget {
         ),
       );
     } else {
-      return Container(
+      return SizedBox(
         height: 80,
         child: Stack(
           children: [
@@ -83,7 +82,7 @@ class PremiumPack extends StatelessWidget {
                 height: 60,
                 width: 350,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(163, 119, 255, 0.4),
+                  color: const Color.fromRGBO(163, 119, 255, 0.4),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Stack(

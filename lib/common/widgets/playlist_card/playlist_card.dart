@@ -1,16 +1,14 @@
-import 'dart:ffi';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
+// ignore: must_be_immutable
 class PlaylistCard extends StatelessWidget {
   double height;
   double width;
   String image;
   String name;
   PlaylistCard(
-      {required this.height,
+      {super.key, required this.height,
       required this.width,
       required this.image,
       required this.name});
@@ -32,7 +30,7 @@ class PlaylistCard extends StatelessWidget {
         Positioned(
           bottom: 10,
           left: 10,
-          child: Container(
+          child: SizedBox(
             height: 40,
             width: 160,
             child: Text(

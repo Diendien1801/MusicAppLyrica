@@ -7,7 +7,7 @@ import 'package:lyrica_ver2/data/repositories/music/music_repository.dart';
 
 class TrackViewController extends GetxController {
   static TrackViewController get to => Get.find();
-  var playButton = false.obs;
+  final playButton = false.obs;
   RxBool isFav = false.obs;
   RxBool isRepeat = true.obs;
   AudioPlayer player = AudioPlayer();
@@ -59,6 +59,7 @@ class TrackViewController extends GetxController {
   @override
   void onInit() async {
     await fetchSongs();
+    
     player?.onDurationChanged.listen((event) {
       duration.value = event;
     });
@@ -80,6 +81,7 @@ class TrackViewController extends GetxController {
 
   Future<void> fetchSongs() async {
     try {
+      print('fetching songs');
       List<SongModel> songs = await songRepository.fetchSongDetails();
       songList.assignAll(songs.where((element) => element.isChecked == true));
     } catch (e) {
@@ -103,16 +105,16 @@ class TrackViewController extends GetxController {
 
   controll(String url) {
     isPopUp();
-    if (player?.state == PlayerState.playing) {
+    if (player.state == PlayerState.playing) {
       pause();
       playButton.value = false;
-    } else if (player?.state == PlayerState.paused) {
+    } else if (player.state == PlayerState.paused) {
       resume();
       playButton.value = true;
-    } else if (player?.state == PlayerState.stopped) {
+    } else if (player.state == PlayerState.stopped) {
       play(url);
       playButton.value = true;
-    } else if (player?.state == PlayerState.completed) {
+    } else if (player.state == PlayerState.completed) {
       play(url);
       playButton.value = true;
     }
