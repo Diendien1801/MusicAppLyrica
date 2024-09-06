@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:lyrica_ver2/common/widgets/popup_music/popup_music.dart';
 import 'package:lyrica_ver2/common/widgets/slider/slider_top_playlists.dart';
-import 'package:lyrica_ver2/common/widgets/song_cover/song_cover_horizontal.dart';
 import 'package:lyrica_ver2/common/widgets/song_cover/song_cover_vertical.dart';
 import 'package:lyrica_ver2/common/widgets/special/avatar.dart';
 import 'package:lyrica_ver2/common/widgets/special/group_3_of_song.dart';
@@ -13,7 +9,6 @@ import 'package:lyrica_ver2/features/authentication/controllers/avatar/avatar_co
 import 'package:lyrica_ver2/features/music/controllers/artist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
-import 'package:lyrica_ver2/features/personalization/controllers/user_controller.dart';
 import 'package:lyrica_ver2/features/personalization/screens/personal.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 import 'package:lyrica_ver2/utils/constants/sizes.dart';
@@ -21,8 +16,9 @@ import 'package:lyrica_ver2/utils/constants/sizes.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  @override
   Widget build(BuildContext context) {
-    final userController = Get.put(UserController());
+    //final userController = Get.put(UserController());
     final artistController = Get.put(ArtistController());
     //final playlistController = Get.put(PlaylistController());
 
@@ -232,9 +228,7 @@ class HomeScreen extends StatelessWidget {
                                             image: AssetImage(
                                                 'assets/images/artists/art${index + 1}.png'),
                                             fit: BoxFit.cover,
-                                            
                                           ),
-                                          
                                         ),
                                       ),
                                     ),

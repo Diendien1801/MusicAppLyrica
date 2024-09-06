@@ -12,6 +12,7 @@ class MySlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final songList = TrackViewController.to.songList;
     return Container(
       color: Colors.transparent,
       child: Center(
@@ -25,7 +26,7 @@ class MySlider extends StatelessWidget {
           duration: 500,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            final songName = TrackViewController.to.songList[index + 2].songName;
+            final songName = songList[index + 2].songName;
             return InkWell(
               onTap: () {
                 // bấm vào đây sẽ mở trình duyệt web và vào url sau
@@ -50,8 +51,7 @@ class MySlider extends StatelessWidget {
               },
               child: Stack(
                 children: [
-                  RepaintBoundary(
-                    child: Container(
+                   Container(
                       width: 400,
                       height: 400,
                       decoration: BoxDecoration(
@@ -61,7 +61,7 @@ class MySlider extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         child: CachedNetworkImage(
                           imageUrl: TrackViewController
-                              .to.songList[index + 2].coverImage,
+                              .to.songList[index + 3].coverImage,
                           placeholder: (context, url) =>
                               ShimmerEffect(height: 400, width: 400),
                           errorWidget: (context, url, error) =>
@@ -76,7 +76,7 @@ class MySlider extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
+                    
                   ),
                   Positioned(
                     bottom: 20,
@@ -85,7 +85,7 @@ class MySlider extends StatelessWidget {
                       height: 50,
                       width: 250,
                       child: Text(
-                        TrackViewController.to.songList[index + 2].songName,
+                        songList[index + 3].songName,
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -100,7 +100,7 @@ class MySlider extends StatelessWidget {
                       height: 40,
                       width: 200,
                       child: Text(
-                        TrackViewController.to.songList[index + 2].artist,
+                        songList[index + 3].artist,
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,

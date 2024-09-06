@@ -1,8 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:lyrica_ver2/data/models/song_model.dart';
-import 'package:lyrica_ver2/data/repositories/authentication.dart';
 import 'package:lyrica_ver2/data/repositories/music/music_repository.dart';
 
 class TrackViewController extends GetxController {
@@ -11,8 +9,8 @@ class TrackViewController extends GetxController {
   RxBool isFav = false.obs;
   RxBool isRepeat = true.obs;
   AudioPlayer player = AudioPlayer();
-  var duration = Duration().obs;
-  var position = Duration().obs;
+  var duration = const Duration().obs;
+  var position = const Duration().obs;
   var popUp = false.obs;
   RxList<SongModel> songList = <SongModel>[].obs;
   var indexSong = 0.obs;
@@ -37,14 +35,14 @@ class TrackViewController extends GetxController {
         return element.isChecked == true && (element.userId == uid);
       }));
 
-      print('userID ${AuthenticationRepository.instance.AuthUser?.uid}');
+     
     } catch (e) {
-      print('Error fetching songs: $e');
+     throw Exception('Error fetching songs: $e');
     }
   }
 
   void updateSongList(List<SongModel> songList) {
-    print('Updating song list with ${songList.length} songs');
+    
     currentSongList.assignAll(songList);
   }
 
@@ -60,32 +58,32 @@ class TrackViewController extends GetxController {
   void onInit() async {
     await fetchSongs();
     
-    player?.onDurationChanged.listen((event) {
+    player.onDurationChanged.listen((event) {
       duration.value = event;
     });
-    player?.onPositionChanged.listen((event) {
+    player.onPositionChanged.listen((event) {
       position.value = event;
     });
-    if (player?.state == PlayerState.playing) {
+    if (player.state == PlayerState.playing) {
       playButton.value = true;
     }
-    if (player?.state == PlayerState.paused) {
+    if (player.state == PlayerState.paused) {
       playButton.value = false;
     }
-    if (player?.state == PlayerState.stopped) {
+    if (player.state == PlayerState.stopped) {
       playButton.value = false;
     }
-    print('goi');
+    
     super.onInit();
   }
 
   Future<void> fetchSongs() async {
     try {
-      print('fetching songs');
+      
       List<SongModel> songs = await songRepository.fetchSongDetails();
       songList.assignAll(songs.where((element) => element.isChecked == true));
     } catch (e) {
-      print('Error fetching songs: $e');
+      throw Exception('Error fetching songs: $e');
     }
   }
 
@@ -99,7 +97,7 @@ class TrackViewController extends GetxController {
 
   isRe() {
     isRepeat.value = !isRepeat.value;
-    player?.setReleaseMode(
+    player.setReleaseMode(
         isRepeat.value ? ReleaseMode.loop : ReleaseMode.release);
   }
 
@@ -121,32 +119,32 @@ class TrackViewController extends GetxController {
   }
 
   play(String url) async {
-    await player?.play(UrlSource(url));
+    await player.play(UrlSource(url));
     player.onPlayerStateChanged.listen((playerState) {
       if (playerState == PlayerState.completed && isRepeat.value == false) {
         next();
       } else if (playerState == PlayerState.completed &&
           isRepeat.value == true) {
-        player?.seek(Duration.zero);
-        player?.play(UrlSource(currentSongList[indexSong.value].url));
+        player.seek(Duration.zero);
+        player.play(UrlSource(currentSongList[indexSong.value].url));
       }
     });
   }
 
   stop() async {
-    await player?.stop();
+    await player.stop();
   }
 
   pause() async {
-    await player?.pause();
+    await player.pause();
   }
 
   seek(Duration value) async {
-    await player?.seek(Duration(seconds: value.inSeconds));
+    await player.seek(Duration(seconds: value.inSeconds));
   }
 
   resume() async {
-    await player?.resume();
+    await player.resume();
   }
 
   void togglePlayButton() {
@@ -175,11 +173,11 @@ class TrackViewController extends GetxController {
 
   inItPlayer() {
     player = AudioPlayer();
-    player?.setSource(UrlSource(currentSongList[indexSong.value].url));
-    player?.onDurationChanged.listen((event) {
+    player.setSource(UrlSource(currentSongList[indexSong.value].url));
+    player.onDurationChanged.listen((event) {
       duration.value = event;
     });
-    player?.onPositionChanged.listen((event) {
+    player.onPositionChanged.listen((event) {
       position.value = event;
     });
   }

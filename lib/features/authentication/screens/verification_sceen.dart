@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:lyrica_ver2/common/widgets/code_input/code_input.dart';
 import 'package:lyrica_ver2/features/authentication/controllers/verify_email_controller/verify_email_controller.dart';
 
 class VerificationScreen extends StatelessWidget {
+  const VerificationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(VerifyEmailController());
@@ -58,7 +56,7 @@ class VerificationScreen extends StatelessWidget {
               child: Text(
                 'A verification code had been sent to your email.',
                 style: Theme.of(context).textTheme.bodyLarge!.apply(
-                      color: Color.fromRGBO(131, 145, 161, 1),
+                      color: const Color.fromRGBO(131, 145, 161, 1),
                     ),
               ),
             ),
@@ -67,7 +65,7 @@ class VerificationScreen extends StatelessWidget {
               child: Text(
                 '',
                 style: Theme.of(context).textTheme.bodyLarge!.apply(
-                      color: Color.fromRGBO(131, 145, 161, 1),
+                      color: const Color.fromRGBO(131, 145, 161, 1),
                     ),
               ),
             ),
@@ -78,11 +76,11 @@ class VerificationScreen extends StatelessWidget {
             Container(
               width: 360,
               height: 56,
-              margin: EdgeInsets.only(top: 30, left: 24),
+              margin: const EdgeInsets.only(top: 30, left: 24),
               child: ElevatedButton(
                 onPressed: () {
                   controller.checkEmailVerification();
-                  print('1');
+                  
                 },
                 child: Text(
                   'Resend Code',

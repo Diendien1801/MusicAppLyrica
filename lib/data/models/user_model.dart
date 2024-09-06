@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lyrica_ver2/data/models/playlist_model.dart';
-import 'package:lyrica_ver2/data/repositories/authentication.dart';
 
 class UserModel {
   String id;

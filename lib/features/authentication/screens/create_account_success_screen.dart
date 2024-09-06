@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:lyrica_ver2/features/authentication/screens/choose_avatar_screen.dart';
-import 'package:lyrica_ver2/features/authentication/screens/login/login_screen.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 
 class CreateAccountSuccessScreen extends StatelessWidget {
+  const CreateAccountSuccessScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class CreateAccountSuccessScreen extends StatelessWidget {
                 color: TColors.primary,
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: Icon(Icons.check, color: Colors.white, size: 70),
+              child: const Icon(Icons.check, color: Colors.white, size: 70),
             ),
           ),
           Container(
@@ -43,7 +42,7 @@ class CreateAccountSuccessScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
-                  .apply(color: Color.fromRGBO(131, 145, 161, 1)),
+                  .apply(color: const Color.fromRGBO(131, 145, 161, 1)),
               textAlign: TextAlign.center,
             ),
           ),

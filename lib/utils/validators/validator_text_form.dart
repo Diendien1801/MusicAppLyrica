@@ -26,6 +26,7 @@ class ValidatorTextForm {
     if (value.isEmpty) {
       return 'Username is required';
     }
+    return null;
   }
 
   static String? validateInput(String value)
@@ -33,6 +34,7 @@ class ValidatorTextForm {
     if (value.isEmpty) {
       return 'This field is required';
     }
+    return null;
     
   }
 

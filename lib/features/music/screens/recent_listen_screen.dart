@@ -1,15 +1,10 @@
-import 'dart:ffi';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:lyrica_ver2/common/widgets/popup_music/popup_music.dart';
 import 'package:lyrica_ver2/common/widgets/song_cover/song_cover_horizontal.dart';
 import 'package:lyrica_ver2/common/widgets/special/avatar.dart';
-import 'package:lyrica_ver2/data/models/song_model.dart';
 
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
@@ -17,9 +12,10 @@ import 'package:lyrica_ver2/features/music/screens/navigation_menu.dart';
 import 'package:lyrica_ver2/features/music/screens/track_view_screen.dart';
 import 'package:lyrica_ver2/features/personalization/controllers/user_controller.dart';
 
+// ignore: must_be_immutable
 class RecentListenScreen extends StatelessWidget {
   String? playlistName;
-  RecentListenScreen({this.playlistName});
+  RecentListenScreen({super.key, this.playlistName});
   Future<void> _updatePlaylistAndTrackView() async {
     final trackViewController = TrackViewController.to;
     final playListController = Get.put(PlaylistController());
@@ -62,10 +58,10 @@ class RecentListenScreen extends StatelessWidget {
                 return Stack(
                   children: [
                     SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: MediaQuery.of(context).size.height,
                             width: MediaQuery.of(context).size.width,
                             child: Stack(
@@ -92,7 +88,7 @@ class RecentListenScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   height: 150,
                                   child: Row(
                                     children: [
@@ -124,7 +120,7 @@ class RecentListenScreen extends StatelessWidget {
                                 ),
                                 Positioned(
                                   top: 170,
-                                  child: Container(
+                                  child: SizedBox(
                                     height: MediaQuery.of(context).size.height -
                                         150,
                                     width:
@@ -155,7 +151,7 @@ class RecentListenScreen extends StatelessWidget {
                                               children: [
                                                 // playlist header
                                                 Obx(
-                                                  () => Container(
+                                                  () => SizedBox(
                                                     height: 80,
                                                     width: double.infinity,
                                                     child: Stack(
@@ -220,11 +216,11 @@ class RecentListenScreen extends StatelessWidget {
                                                                           1),
                                                                 ),
                                                               ),
-                                                              Container(
+                                                              const SizedBox(
                                                                 height: 24,
                                                                 width: 24,
                                                                 child:
-                                                                    const Image(
+                                                                    Image(
                                                                   image: AssetImage(
                                                                       'assets/icons/more.png'),
                                                                   color: Color
@@ -299,7 +295,7 @@ class RecentListenScreen extends StatelessWidget {
                                                                     width: 50,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color.fromRGBO(
+                                                                      color: const Color.fromRGBO(
                                                                           195,
                                                                           71,
                                                                           216,
@@ -308,7 +304,7 @@ class RecentListenScreen extends StatelessWidget {
                                                                           BorderRadius.circular(
                                                                               50),
                                                                     ),
-                                                                    child: Icon(
+                                                                    child: const Icon(
                                                                         Icons
                                                                             .play_arrow_rounded,
                                                                         color: Colors
@@ -323,7 +319,7 @@ class RecentListenScreen extends StatelessWidget {
                                                     ),
                                                   ),
                                                 ),
-                                                Container(
+                                                SizedBox(
                                                   height: 600,
                                                   width: double.infinity,
                                                   child: ListView.builder(
@@ -393,7 +389,7 @@ class RecentListenScreen extends StatelessWidget {
                                             initialIndex: 2,
                                           ));
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.arrow_back_ios,
                                       color: Colors.white,
                                     ),

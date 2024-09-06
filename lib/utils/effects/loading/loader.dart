@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 
 // Widget for displaying a loading animation indicator with optional text and action button
+// ignore: must_be_immutable
 class AnimationLoaderWidget extends StatelessWidget {
   /// Default constructor for the AnimationLoaderWidget
   ///

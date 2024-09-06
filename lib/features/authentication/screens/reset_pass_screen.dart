@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lyrica_ver2/features/authentication/controllers/reset/reset_pass_controller.dart';
-import 'package:lyrica_ver2/features/authentication/screens/main_login_screen.dart';
-import 'package:lyrica_ver2/features/authentication/screens/pass_change_success_screen.dart';
 import 'package:lyrica_ver2/utils/validators/validator_text_form.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   final controller = Get.put(ResetPassController());
+
+   ResetPasswordScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +62,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
             Form(
               key: controller.formKey,
-              child: Container(
+              child: SizedBox(
                 height: 130,
                 child: Stack(
                   children: [
@@ -75,13 +73,13 @@ class ResetPasswordScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.transparent),
-                        color: Color.fromRGBO(41, 27, 60, 1),
+                        color: const Color.fromRGBO(41, 27, 60, 1),
                       ),
                     ),
                     Positioned(
                       top: 52,
                       left: 24,
-                      child: Container(
+                      child: SizedBox(
                         height: 120,
                         width: 360,
                         child: TextFormField(
@@ -94,7 +92,7 @@ class ResetPasswordScreen extends StatelessWidget {
                             hintText: 'Enter your email',
                             hintStyle:
                                 Theme.of(context).textTheme.bodyMedium!.apply(
-                                      color: Color.fromRGBO(133, 128, 167, 1),
+                                      color: const Color.fromRGBO(133, 128, 167, 1),
                                     ),
                             enabledBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.transparent),

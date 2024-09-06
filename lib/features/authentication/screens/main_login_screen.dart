@@ -1,19 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lyrica_ver2/data/repositories/authentication.dart';
 
 import 'package:lyrica_ver2/features/authentication/controllers/login/login_controller.dart';
 
-import 'package:lyrica_ver2/features/authentication/screens/forgot_pass.dart';
 import 'package:lyrica_ver2/features/authentication/screens/reset_pass_screen.dart';
-import 'package:lyrica_ver2/features/music/screens/navigation_menu.dart';
 import 'package:lyrica_ver2/utils/validators/validator_text_form.dart';
 
 class MainLoginScreen extends StatelessWidget {
+  const MainLoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final loginController = Get.put(LoginController());
@@ -78,7 +75,7 @@ class MainLoginScreen extends StatelessWidget {
                 key: loginController.loginFormKey,
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 130,
                       child: Stack(
                         children: [
@@ -89,13 +86,13 @@ class MainLoginScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(41, 27, 60, 1),
+                              color: const Color.fromRGBO(41, 27, 60, 1),
                             ),
                           ),
                           Positioned(
                             top: 52,
                             left: 24,
-                            child: Container(
+                            child: SizedBox(
                               height: 120,
                               width: 360,
                               child: TextFormField(
@@ -110,7 +107,7 @@ class MainLoginScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
@@ -139,7 +136,7 @@ class MainLoginScreen extends StatelessWidget {
                       ),
                     ),
                     Obx(
-                      () => Container(
+                      () => SizedBox(
                         height: 80,
                         child: Stack(
                           children: [
@@ -150,13 +147,13 @@ class MainLoginScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(color: Colors.transparent),
-                                color: Color.fromRGBO(41, 27, 60, 1),
+                                color: const Color.fromRGBO(41, 27, 60, 1),
                               ),
                             ),
                             Positioned(
                               top: 10,
                               left: 24,
-                              child: Container(
+                              child: SizedBox(
                                 height: 120,
                                 width: 360,
                                 child: TextFormField(
@@ -175,7 +172,7 @@ class MainLoginScreen extends StatelessWidget {
                                         .bodyMedium!
                                         .apply(
                                           color:
-                                              Color.fromRGBO(133, 128, 167, 1),
+                                              const Color.fromRGBO(133, 128, 167, 1),
                                         ),
                                     enabledBorder: const UnderlineInputBorder(
                                       borderSide:
@@ -239,7 +236,7 @@ class MainLoginScreen extends StatelessWidget {
                   child: Text(
                     'Forgot Password?',
                     style: Theme.of(context).textTheme.bodyMedium!.apply(
-                          color: Color.fromRGBO(195, 71, 216, 1),
+                          color: const Color.fromRGBO(195, 71, 216, 1),
                         ),
                   ),
                 ),
@@ -264,16 +261,19 @@ class MainLoginScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class TextForm extends StatelessWidget {
   String hint;
   TextEditingController controller;
+  // ignore: non_constant_identifier_names
   Function? ValidatorTextForm;
   TextForm({
-    Key? key,
+    super.key,
     required this.hint,
     required this.controller,
+    // ignore: non_constant_identifier_names
     required this.ValidatorTextForm,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -283,7 +283,7 @@ class TextForm extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.transparent),
-        color: Color.fromRGBO(41, 27, 60, 1),
+        color: const Color.fromRGBO(41, 27, 60, 1),
       ),
       child: TextFormField(
         controller: controller,
@@ -292,7 +292,7 @@ class TextForm extends StatelessWidget {
           contentPadding: const EdgeInsets.only(left: 20, top: 5),
           hintText: hint,
           hintStyle: Theme.of(context).textTheme.bodyMedium!.apply(
-                color: Color.fromRGBO(133, 128, 167, 1),
+                color: const Color.fromRGBO(133, 128, 167, 1),
               ),
           enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),

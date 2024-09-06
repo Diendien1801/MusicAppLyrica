@@ -1,8 +1,5 @@
-import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -11,13 +8,15 @@ import 'package:lyrica_ver2/features/personalization/controllers/upload_music_co
 import 'package:lyrica_ver2/utils/validators/validator_text_form.dart';
 
 class UpLoadMusicScreen extends StatelessWidget {
+  const UpLoadMusicScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final upLoadController = Get.put(UpLoadMusicController());
 
     return Scaffold(
       body: Container(
-        color: Color.fromRGBO(13, 3, 25, 1),
+        color: const Color.fromRGBO(13, 3, 25, 1),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -26,7 +25,7 @@ class UpLoadMusicScreen extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 70, left: 30),
+                    margin: const EdgeInsets.only(top: 70, left: 30),
                     width: 190,
                     child: Text(
                       'Share         your music',
@@ -37,7 +36,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                   ),
                   // Avatar
                   Container(
-                      margin: EdgeInsets.only(top: 70, left: 120),
+                      margin: const EdgeInsets.only(top: 70, left: 120),
                       child: Avatar(
                           height: 50,
                           width: 50,
@@ -54,25 +53,25 @@ class UpLoadMusicScreen extends StatelessWidget {
                   () => Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 40, left: 120),
+                        margin: const EdgeInsets.only(top: 40, left: 120),
                         height: 180,
                         width: 180,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(152, 103, 255, 1),
+                          color: const Color.fromRGBO(152, 103, 255, 1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      upLoadController.image.value!.path.isEmpty
+                      upLoadController.image.value.path.isEmpty
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(left: 186, top: 80),
+                                  margin: const EdgeInsets.only(left: 186, top: 80),
                                   height: 50,
                                   width: 50,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                       image: AssetImage(
                                           'assets/icons/uploadImage.png'),
                                       fit: BoxFit.cover,
@@ -80,7 +79,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(left: 140, top: 20),
+                                  margin: const EdgeInsets.only(left: 140, top: 20),
                                   height: 70,
                                   width: 300,
                                   child: Text(
@@ -98,12 +97,12 @@ class UpLoadMusicScreen extends StatelessWidget {
                           : Stack(
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(left: 186, top: 100),
+                                  margin: const EdgeInsets.only(left: 186, top: 100),
                                   height: 50,
                                   width: 50,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                       image: AssetImage(
                                           'assets/icons/uploadImage.png'),
                                       fit: BoxFit.cover,
@@ -117,7 +116,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
                                       image: FileImage(
-                                          upLoadController.image.value!),
+                                          upLoadController.image.value),
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -134,7 +133,7 @@ class UpLoadMusicScreen extends StatelessWidget {
               Form(
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 110,
                       child: Stack(
                         children: [
@@ -145,13 +144,13 @@ class UpLoadMusicScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(41, 27, 60, 1),
+                              color: const Color.fromRGBO(41, 27, 60, 1),
                             ),
                           ),
                           Positioned(
                             top: 32,
                             left: 24,
-                            child: Container(
+                            child: SizedBox(
                               height: 120,
                               width: 360,
                               child: TextFormField(
@@ -165,7 +164,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
@@ -193,7 +192,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 70,
                       child: Stack(
                         children: [
@@ -204,13 +203,13 @@ class UpLoadMusicScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(41, 27, 60, 1),
+                              color: const Color.fromRGBO(41, 27, 60, 1),
                             ),
                           ),
                           Positioned(
                             top: 0,
                             left: 24,
-                            child: Container(
+                            child: SizedBox(
                               height: 120,
                               width: 360,
                               child: TextFormField(
@@ -224,7 +223,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
@@ -252,7 +251,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 80,
                       child: Stack(
                         children: [
@@ -263,13 +262,13 @@ class UpLoadMusicScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(41, 27, 60, 1),
+                              color: const Color.fromRGBO(41, 27, 60, 1),
                             ),
                           ),
                           Positioned(
                             top: 10,
                             left: 24,
-                            child: Container(
+                            child: SizedBox(
                               height: 120,
                               width: 360,
                               child: TextFormField(
@@ -283,7 +282,7 @@ class UpLoadMusicScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
@@ -323,10 +322,10 @@ class UpLoadMusicScreen extends StatelessWidget {
                   width: 120,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(218, 0, 255, 1),
+                    color: const Color.fromRGBO(218, 0, 255, 1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.only(top: 10, bottom: 40),
+                  margin: const EdgeInsets.only(top: 10, bottom: 40),
                   child: Center(
                     child: Text(
                       'Upload',

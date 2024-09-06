@@ -2,10 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:lyrica_ver2/data/models/song_model.dart';
-import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
-import 'package:string_similarity/string_similarity.dart';
 
 class SearchingController extends GetxController {
   static SearchingController get to => Get.find();
@@ -31,7 +28,7 @@ class SearchingController extends GetxController {
         await searchSongById(song.userId);
       }
     } catch (e) {
-      print('Error: $e');
+      throw Exception('Error fetching songs: $e');
     }
   }
 

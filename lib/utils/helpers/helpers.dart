@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lyrica_ver2/data/models/playlist_model.dart';
 import 'package:lyrica_ver2/data/models/song_model.dart';
 import 'package:lyrica_ver2/data/repositories/authentication.dart';
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
@@ -76,6 +75,7 @@ class THelperFunctions {
                               AuthenticationRepository.instance.AuthUser!.uid,
                               'playlist',
                               fav);
+                          // ignore: use_build_context_synchronously
                           Navigator.pop(context);
                           Get.snackbar('Successfully added to favorites',
                               'Check your favorites now!');
@@ -180,24 +180,22 @@ class THelperFunctions {
                       },
                     );
                   },
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 16),
-                          height: 24,
-                          width: 24,
-                          child: const Image(
-                              image: AssetImage('assets/icons/add.png'),
-                              color: Colors.white),
-                        ),
-                        Text(
-                          'Add to a playlist',
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 16),
+                        height: 24,
+                        width: 24,
+                        child: const Image(
+                            image: AssetImage('assets/icons/add.png'),
+                            color: Colors.white),
+                      ),
+                      Text(
+                        'Add to a playlist',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                    ],
                   ),
                 ),
               ],

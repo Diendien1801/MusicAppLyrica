@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lyrica_ver2/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:lyrica_ver2/features/authentication/screens/main_login_screen.dart';
-import 'package:lyrica_ver2/features/music/screens/navigation_menu.dart';
 import 'package:lyrica_ver2/utils/validators/validator_text_form.dart';
 
 class RegisterScreen extends StatelessWidget {
   final controller = Get.put(SignupController());
+
+   RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
               key: controller.signUpFormKey,
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     height: 114,
                     child: Stack(
                       children: [
@@ -77,13 +77,13 @@ class RegisterScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: Colors.transparent),
-                            color: Color.fromRGBO(41, 27, 60, 1),
+                            color: const Color.fromRGBO(41, 27, 60, 1),
                           ),
                         ),
                         Positioned(
                           top: 34,
                           left: 24,
-                          child: Container(
+                          child: SizedBox(
                             height: 120,
                             width: 360,
                             child: TextFormField(
@@ -98,7 +98,7 @@ class RegisterScreen extends StatelessWidget {
                                     .textTheme
                                     .bodyMedium!
                                     .apply(
-                                      color: Color.fromRGBO(133, 128, 167, 1),
+                                      color: const Color.fromRGBO(133, 128, 167, 1),
                                     ),
                                 enabledBorder: const UnderlineInputBorder(
                                   borderSide:
@@ -115,7 +115,7 @@ class RegisterScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: 74,
                     child: Stack(
                       children: [
@@ -126,13 +126,13 @@ class RegisterScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: Colors.transparent),
-                            color: Color.fromRGBO(41, 27, 60, 1),
+                            color: const Color.fromRGBO(41, 27, 60, 1),
                           ),
                         ),
                         Positioned(
                           top: 4,
                           left: 24,
-                          child: Container(
+                          child: SizedBox(
                             height: 120,
                             width: 360,
                             child: TextFormField(
@@ -147,7 +147,7 @@ class RegisterScreen extends StatelessWidget {
                                     .textTheme
                                     .bodyMedium!
                                     .apply(
-                                      color: Color.fromRGBO(133, 128, 167, 1),
+                                      color: const Color.fromRGBO(133, 128, 167, 1),
                                     ),
                                 enabledBorder: const UnderlineInputBorder(
                                   borderSide:
@@ -165,7 +165,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   Obx(
-                    () => Container(
+                    () => SizedBox(
                       height: 84,
                       child: Stack(
                         children: [
@@ -176,13 +176,13 @@ class RegisterScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(41, 27, 60, 1),
+                              color: const Color.fromRGBO(41, 27, 60, 1),
                             ),
                           ),
                           Positioned(
                             top: 12,
                             left: 24,
-                            child: Container(
+                            child: SizedBox(
                               height: 120,
                               width: 360,
                               child: TextFormField(
@@ -198,7 +198,7 @@ class RegisterScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
@@ -250,7 +250,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   Obx(
-                    () => Container(
+                    () => SizedBox(
                       height: 82,
                       child: Stack(
                         children: [
@@ -261,13 +261,13 @@ class RegisterScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(41, 27, 60, 1),
+                              color: const Color.fromRGBO(41, 27, 60, 1),
                             ),
                           ),
                           Positioned(
                             top: 12,
                             left: 24,
-                            child: Container(
+                            child: SizedBox(
                               height: 120,
                               width: 360,
                               child: TextFormField(
@@ -284,7 +284,7 @@ class RegisterScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:

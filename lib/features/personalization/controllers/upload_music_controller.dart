@@ -52,7 +52,7 @@ class UpLoadMusicController extends GetxController {
       final path = result.files.single.path;
       final file = File(path!);
       //up load file to firebase storage
-      final fileName = file!.path;
+      final fileName = file.path;
       final destination = 'files/$fileName';
       FullScreenLoader.openLoadingDialog(
           'Loading...', 'assets/animations/141594-animation-of-docer.json');
@@ -88,8 +88,8 @@ class UpLoadMusicController extends GetxController {
 
   // upload image and get url
   Future<String> uploadImage() async {
-    if (image.value!.path.isEmpty) return '';
-    final file = image.value!;
+    if (image.value.path.isEmpty) return '';
+    final file = image.value;
     final fileName = file.path.split('/').last;
     final destination = 'images/$fileName';
     final task = FirebaseApi.uploadFile(destination, file);

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lyrica_ver2/features/authentication/screens/main_login_screen.dart';
 
 
 class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +74,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             Container(
               width: 360,
               height: 56,
-              margin: EdgeInsets.only(top: 30, left: 24),
+              margin: const EdgeInsets.only(top: 30, left: 24),
               child: ElevatedButton(
                 onPressed: () {},
                 child: Text(

@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lyrica_ver2/data/models/playlist_model.dart';
 import 'package:lyrica_ver2/data/models/song_model.dart';
-import 'package:lyrica_ver2/data/repositories/authentication.dart';
 import 'package:lyrica_ver2/data/repositories/playlists/playlists_repository.dart';
 import 'package:lyrica_ver2/features/music/controllers/fav_playlist_controller.dart';
-import 'package:lyrica_ver2/features/personalization/controllers/user_controller.dart';
 
 class PlaylistController extends GetxController {
   static PlaylistController get to => Get.find();
@@ -69,7 +66,7 @@ class PlaylistController extends GetxController {
     } on PlatformException {
       rethrow;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -92,7 +89,7 @@ class PlaylistController extends GetxController {
     } on PlatformException {
       rethrow;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

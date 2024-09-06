@@ -14,25 +14,24 @@ import 'package:lyrica_ver2/features/authentication/screens/choose_avatar_screen
 import 'package:lyrica_ver2/features/music/controllers/artist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
-import 'package:lyrica_ver2/features/music/screens/track_view_screen.dart';
 import 'package:lyrica_ver2/features/personalization/controllers/user_controller.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 import 'package:lyrica_ver2/utils/effects/shimmer_effect.dart';
 
+// ignore: must_be_immutable
 class PersonalScreen extends StatelessWidget {
   bool isMe;
   String img;
   PersonalScreen({
-    Key? key,
+    super.key,
     required this.isMe,
     required this.img,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AvatarController());
     final userController = UserController.to;
-    final trackViewController = TrackViewController.to;
     print(userController.user.value.username);
     return Material(
       child: Scaffold(
@@ -79,26 +78,27 @@ class PersonalScreen extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: 50, left: 30),
+                              margin: const EdgeInsets.only(top: 50, left: 30),
                               child: IconButton(
                                 onPressed: () async {
                                   await PlaylistController.to.fetchMyPlaylists(
                                       AuthenticationRepository
                                           .instance.AuthUser!.uid);
+                                  // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
                                 },
                                 icon: const Icon(Icons.arrow_back_ios),
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(top: 50, left: 230),
+                              margin: const EdgeInsets.only(top: 50, left: 230),
                               child: IconButton(
                                 onPressed: () {},
                                 icon: const Icon(Icons.settings),
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(top: 50),
+                              margin: const EdgeInsets.only(top: 50),
                               child: IconButton(
                                 onPressed: () async {
                                   await AuthenticationRepository.instance
@@ -110,7 +110,7 @@ class PersonalScreen extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 180, left: 160),
+                          margin: const EdgeInsets.only(top: 180, left: 160),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -128,7 +128,8 @@ class PersonalScreen extends StatelessWidget {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(150),
                                   border: Border.all(
-                                    color: Color.fromRGBO(207, 134, 237, 1),
+                                    color:
+                                        const Color.fromRGBO(207, 134, 237, 1),
                                     width: 3,
                                   ),
                                   image: DecorationImage(
@@ -161,10 +162,8 @@ class PersonalScreen extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 10, left: 10),
                       child: Text(
                         'This is a very long status that is going to be displayed here',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .apply(color: Color.fromRGBO(137, 139, 170, 1)),
+                        style: Theme.of(context).textTheme.bodyMedium!.apply(
+                            color: const Color.fromRGBO(137, 139, 170, 1)),
                       ),
                     ),
                     // FOLLOWERS AND FOLLOWING
@@ -224,7 +223,8 @@ class PersonalScreen extends StatelessWidget {
                           )
                         : Container(),
                     Container(
-                      margin: EdgeInsets.only(top: 20, right: 180, bottom: 10),
+                      margin: const EdgeInsets.only(
+                          top: 20, right: 180, bottom: 10),
                       width: 170,
                       child: Text(
                         'Hot songs for you',
@@ -233,7 +233,7 @@ class PersonalScreen extends StatelessWidget {
                     ),
 
                     // MOST LISTENED LIST
-                    Container(
+                    SizedBox(
                       height: 185,
                       child: PageView.builder(
                         controller: PageController(viewportFraction: 0.87),
@@ -241,14 +241,15 @@ class PersonalScreen extends StatelessWidget {
                         itemBuilder: (context, index1) => Container(
                           height: 185,
                           // color: Colors.blue,
-                          margin: EdgeInsets.only(top: 0, left: 6),
+                          margin: const EdgeInsets.only(top: 0, left: 6),
                           child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             padding: EdgeInsets.zero,
                             itemCount: 3,
                             itemBuilder: (context, index2) {
                               return Container(
-                                margin: EdgeInsets.only(right: 10, top: 10),
+                                margin:
+                                    const EdgeInsets.only(right: 10, top: 10),
                                 child: SongCoverHorizontal(
                                     song: TrackViewController
                                         .to.songList[index1 * 3 + index2]),
@@ -264,7 +265,7 @@ class PersonalScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 20, left: 30),
+                          margin: const EdgeInsets.only(top: 20, left: 30),
                           width: 300,
                           child: Text(
                             'Released',
@@ -274,7 +275,7 @@ class PersonalScreen extends StatelessWidget {
                         Obx(
                           () => Container(
                             height: 207,
-                            margin: EdgeInsets.only(top: 0),
+                            margin: const EdgeInsets.only(top: 0),
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount:
@@ -285,8 +286,8 @@ class PersonalScreen extends StatelessWidget {
                                   children: [
                                     // Avatar
                                     Container(
-                                      margin:
-                                          EdgeInsets.only(top: 20, left: 30),
+                                      margin: const EdgeInsets.only(
+                                          top: 20, left: 30),
                                       height: 140,
                                       width: 140,
                                       decoration: const BoxDecoration(
@@ -302,7 +303,7 @@ class PersonalScreen extends StatelessWidget {
                                               ShimmerEffect(
                                                   height: 140, width: 140),
                                           errorWidget: (context, url, error) =>
-                                              Icon(Icons.error),
+                                              const Icon(Icons.error),
                                           imageBuilder:
                                               (context, imageProvider) =>
                                                   Container(
@@ -319,7 +320,8 @@ class PersonalScreen extends StatelessWidget {
                                     // Artist Name
 
                                     Container(
-                                      margin: EdgeInsets.only(left: 30, top: 6),
+                                      margin: const EdgeInsets.only(
+                                          left: 30, top: 6),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -353,14 +355,14 @@ class PersonalScreen extends StatelessWidget {
                     //PLAYLISTS
 
                     Obx(
-                      () => Container(
+                      () => SizedBox(
                         height: 270,
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: 20, left: 30),
+                              margin: const EdgeInsets.only(top: 20, left: 30),
                               width: 170,
                               child: Text(
                                 'Playlists',
@@ -369,15 +371,15 @@ class PersonalScreen extends StatelessWidget {
                             ),
                             Container(
                               height: 210,
-                              margin: EdgeInsets.only(top: 0),
+                              margin: const EdgeInsets.only(top: 0),
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount:
                                     PlaylistController.to.myPlaylist.length,
                                 itemBuilder: (context, index) {
-                                  if (PlaylistController.to.myPlaylist.length ==
-                                      0) {
-                                    return Text('No playlist');
+                                  if (PlaylistController
+                                      .to.myPlaylist.isEmpty) {
+                                    return const Text('No playlist');
                                   } else {
                                     return Column(
                                       crossAxisAlignment:
@@ -385,7 +387,7 @@ class PersonalScreen extends StatelessWidget {
                                       children: [
                                         // Avatar
                                         Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               top: 20, left: 28),
                                           height: 140,
                                           width: 140,
@@ -409,7 +411,7 @@ class PersonalScreen extends StatelessWidget {
                                         Container(
                                           height: 40,
                                           width: 140,
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               top: 10, left: 34),
                                           child: Text(
                                             PlaylistController
@@ -430,7 +432,7 @@ class PersonalScreen extends StatelessWidget {
                       ),
                     ),
 
-                    Container(
+                    SizedBox(
                       height: 60,
                       width: MediaQuery.of(context).size.width,
                     )
@@ -443,7 +445,7 @@ class PersonalScreen extends StatelessWidget {
               right: 22,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: PopUpMusic(),
+                child: const PopUpMusic(),
               ),
             ),
           ],

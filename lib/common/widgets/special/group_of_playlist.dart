@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lyrica_ver2/common/widgets/playlist_card/playlist_card.dart';
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
 import 'package:lyrica_ver2/features/music/screens/recent_listen_screen.dart';
 
+// ignore: must_be_immutable
 class GroupOfPlayList extends StatelessWidget {
   int itemStart;
-  GroupOfPlayList({required this.itemStart});
+  GroupOfPlayList({super.key, required this.itemStart});
   @override
   Widget build(BuildContext context) {
     return Container(

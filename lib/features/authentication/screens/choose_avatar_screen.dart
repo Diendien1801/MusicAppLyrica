@@ -1,15 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import 'package:lyrica_ver2/data/repositories/authentication.dart';
 import 'package:lyrica_ver2/features/authentication/controllers/avatar/avatar_controller.dart';
-import 'package:lyrica_ver2/features/music/screens/navigation_menu.dart';
 import 'package:lyrica_ver2/utils/constants/image_string.dart';
 import 'package:lyrica_ver2/utils/effects/loading/fullscreen_loader.dart';
 
+// ignore: must_be_immutable
 class ChooseAvatarScreen extends StatelessWidget {
   late bool fromEdit;
   ChooseAvatarScreen({
@@ -43,7 +41,7 @@ class ChooseAvatarScreen extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 50),
+                  margin: const EdgeInsets.only(top: 50),
                   child: Text(
                     'Set your avatar',
                     style: Theme.of(context).textTheme.headlineMedium,
@@ -57,10 +55,10 @@ class ChooseAvatarScreen extends StatelessWidget {
                       height: 150,
                       width: 150,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(133, 128, 167, 1),
+                        color: const Color.fromRGBO(133, 128, 167, 1),
                         borderRadius: BorderRadius.circular(150),
                       ),
-                      margin: EdgeInsets.only(top: 60),
+                      margin: const EdgeInsets.only(top: 60),
                     ),
                     Positioned(
                       top: 60,
@@ -88,7 +86,7 @@ class ChooseAvatarScreen extends StatelessWidget {
                   height: 300,
                   margin: const EdgeInsets.only(top: 26),
                   child: GridView(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3),
                     children: List.generate(
                       ImageString().imageString.length,

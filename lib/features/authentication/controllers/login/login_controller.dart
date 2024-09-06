@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:lyrica_ver2/data/models/user_model.dart';
 import 'package:lyrica_ver2/data/repositories/authentication.dart';
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
-import 'package:lyrica_ver2/utils/constants/image_string.dart';
 import 'package:lyrica_ver2/utils/effects/loading/fullscreen_loader.dart';
 
 class LoginController extends GetxController {
@@ -33,7 +32,7 @@ class LoginController extends GetxController {
         return UserModel.empty();
       }
     } catch (e) {
-      print('Error fetching user data: $e');
+      
       return null;
     }
   }

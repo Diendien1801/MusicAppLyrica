@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lyrica_ver2/common/widgets/button/button.dart';
 import 'package:lyrica_ver2/common/widgets/button/login_button_social.dart';
-import 'package:lyrica_ver2/features/authentication/screens/choose_avatar_screen.dart';
-import 'package:lyrica_ver2/features/authentication/screens/create_account_success_screen.dart';
 import 'package:lyrica_ver2/features/authentication/screens/main_login_screen.dart';
 import 'package:lyrica_ver2/features/authentication/screens/register_screen.dart';
-import 'package:lyrica_ver2/features/authentication/screens/reset_pass_screen.dart';
-import 'package:lyrica_ver2/features/authentication/screens/verification_sceen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({
@@ -70,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                     margin: const EdgeInsets.only(top: 20),
                     child: Button(
                       text: 'Login',
-                      color: Color(0xFF6A35DB),
+                      color: const Color(0xFF6A35DB),
                       textColor: Colors.white,
                     )),
               ),
@@ -88,14 +84,14 @@ class LoginScreen extends StatelessWidget {
                   width: 360,
                   margin: const EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: const Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Center(
                     child: Text(
                       'Register',
                       style: Theme.of(context).textTheme.titleSmall!.apply(
-                            color: Color.fromRGBO(106, 53, 219, 1),
+                            color: const Color.fromRGBO(106, 53, 219, 1),
                           ),
                     ),
                   ),
