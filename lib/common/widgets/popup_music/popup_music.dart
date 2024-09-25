@@ -14,7 +14,7 @@ class PopUpMusic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = TrackViewController.to;
-    print(controller.popUp.value);
+    
     return Obx(
       () => Material(
         child: controller.popUp.value == false
@@ -32,7 +32,14 @@ class PopUpMusic extends StatelessWidget {
                   height: 70,
                   width: MediaQuery.of(context).size.width - 50,
                   decoration: const BoxDecoration(
-                    color: Color.fromRGBO(106, 53, 219, 1),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromRGBO(106, 53, 219, 1),
+                        Color.fromRGBO(195, 71, 216, 1),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                     borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   child: Row(
@@ -48,10 +55,9 @@ class PopUpMusic extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: CachedNetworkImage(
-                                imageUrl: TrackViewController
-                                    .to
-                                    .currentSongList[
-                                        TrackViewController.to.indexSong.value]
+                                imageUrl: controller
+                                    .currentSongListPlay[
+                                        controller.indexSong.value]
                                     .coverImage,
                                 placeholder: (context, url) =>
                                     ShimmerEffect(height: 50, width: 50),
@@ -77,7 +83,7 @@ class PopUpMusic extends StatelessWidget {
                               children: [
                                 Text(
                                   controller
-                                      .currentSongList[
+                                      .currentSongListPlay[
                                           controller.indexSong.value]
                                       .songName,
                                   style:
@@ -85,7 +91,7 @@ class PopUpMusic extends StatelessWidget {
                                 ),
                                 Text(
                                   controller
-                                      .currentSongList[
+                                      .currentSongListPlay[
                                           controller.indexSong.value]
                                       .artist,
                                   style: Theme.of(context).textTheme.labelLarge,

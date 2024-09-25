@@ -32,7 +32,7 @@ class MySlider extends StatelessWidget {
                 // bấm vào đây sẽ mở trình duyệt web và vào url sau
                 final controller = TrackViewController.to;
 
-                var index = controller.currentSongList
+                var index = controller.songList
                     .indexWhere((s) => s.songName == songName);
                 controller.setIndex(index);
 
@@ -51,32 +51,31 @@ class MySlider extends StatelessWidget {
               },
               child: Stack(
                 children: [
-                   Container(
-                      width: 400,
-                      height: 400,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: CachedNetworkImage(
-                          imageUrl: TrackViewController
-                              .to.songList[index + 3].coverImage,
-                          placeholder: (context, url) =>
-                              ShimmerEffect(height: 400, width: 400),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
+                  Container(
+                    width: 400,
+                    height: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl: TrackViewController
+                            .to.songList[index + 2].coverImage,
+                        placeholder: (context, url) =>
+                            ShimmerEffect(height: 400, width: 400),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                        imageBuilder: (context, imageProvider) => Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ),
-                    
+                    ),
                   ),
                   Positioned(
                     bottom: 20,
@@ -85,7 +84,7 @@ class MySlider extends StatelessWidget {
                       height: 50,
                       width: 250,
                       child: Text(
-                        songList[index + 3].songName,
+                        songList[index + 2].songName,
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,

@@ -39,12 +39,12 @@ class SignupController extends GetxController {
       if (!signUpFormKey.currentState!.validate()) {
         return;
       }
-      //resigter user int the firebase authentication & save user data in firebase
+      //resigter user in the firebase authentication & save user data in firebase
       final userCredential = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
               email.text.trim(), password.text.trim());
 
-      print('1');
+      
       // Save Authenticated User
       final newUser = UserModel(
         id: userCredential.user!.uid,
@@ -52,18 +52,21 @@ class SignupController extends GetxController {
         username: username.text.trim(),
         isPremium: false,
         isBanned: false,
-        playlist: PlaylistModel(id: '', name: 'Favorite', songs: [], stt: ''),
+        playlist: PlaylistModel(id: '', name: 'Favorite', songs: [], stt: '', coverImage: ''), // favorite playlist
       );
-      print('2');
+      
+
+      // Save User Record
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
+
+      // fetch playlist
       final controller = Get.put(PlaylistController());
       await controller.fetchPlaylists();
-
       await PlaylistController.to.fetchMyPlaylists(
         userCredential.user!.uid,
       );
-      print('3');
+      // Navigate to verification screen
       Get.to(() => VerificationScreen());
     } on FirebaseAuthException catch (e) {
       FullScreenLoader.stopLoading();

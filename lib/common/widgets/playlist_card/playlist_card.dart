@@ -1,5 +1,6 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:lyrica_ver2/utils/effects/shimmer_effect.dart';
 
 // ignore: must_be_immutable
 class PlaylistCard extends StatelessWidget {
@@ -8,7 +9,8 @@ class PlaylistCard extends StatelessWidget {
   String image;
   String name;
   PlaylistCard(
-      {super.key, required this.height,
+      {super.key,
+      required this.height,
       required this.width,
       required this.image,
       required this.name});
@@ -21,9 +23,26 @@ class PlaylistCard extends StatelessWidget {
           width: width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: AssetImage(image),
-              fit: BoxFit.cover,
+            border: Border.all(
+              color: Theme.of(context).colorScheme.secondary,
+              width: 1,
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              placeholder: (context, url) =>
+                  ShimmerEffect(height: 400, width: 400),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
           ),
         ),

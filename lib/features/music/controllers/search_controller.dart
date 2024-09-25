@@ -36,7 +36,7 @@ class SearchingController extends GetxController {
     try {
       DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
           .collection('uploads')
-          .doc(songId)
+          .doc()
           .get();
       //print(documentSnapshot.data());
       if (documentSnapshot.exists) {

@@ -14,19 +14,19 @@ class GroupThreeOfSong extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: SongCoverHorizontal(
-            song: TrackViewController.to.currentSongList[index],
+            song: TrackViewController.to.songList[index],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: SongCoverHorizontal(
-            song: TrackViewController.to.currentSongList[index + 1],
+            song: TrackViewController.to.songList[index + 1],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: SongCoverHorizontal(
-            song: TrackViewController.to.currentSongList[index + 2],
+            song: TrackViewController.to.songList[index + 2],
           ),
         ),
       ]),

@@ -11,9 +11,9 @@ class LoginController extends GetxController {
   static LoginController get instance => Get.find();
 
   /// Variables
-  final hidePassword = true.obs;
-  final email = TextEditingController();
-  final password = TextEditingController();
+  final hidePassword = true.obs; // show or hide password
+  final email = TextEditingController(); // email controller
+  final password = TextEditingController(); // password controller
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   /// -- TOGGLE PASSWORD
@@ -32,7 +32,6 @@ class LoginController extends GetxController {
         return UserModel.empty();
       }
     } catch (e) {
-      
       return null;
     }
   }
@@ -54,21 +53,26 @@ class LoginController extends GetxController {
       final userCredential = await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
       final uid = userCredential.user?.uid;
-      final controller = Get.put(PlaylistController());
-      await controller.fetchPlaylists();
-      await controller.fetchMyPlaylists(userCredential.user!.uid);
+
+      // fetch playlist
+      //final controller = Get.put(PlaylistController());
+      // await controller.fetchPlaylists();
+      // await controller.fetchMyPlaylists(userCredential.user!.uid);
+
+      // fetch user data
       if (uid != null) {
         final userData = await fetchUserData(uid);
-
+        // check if user is banned
         if (userData?.isBanned == true) {
           FullScreenLoader.stopLoading();
           Get.snackbar('Try again', 'Your account has been banned');
           return;
         } else {
+          // redirect to home screen
           
-          FullScreenLoader.stopLoading();
           AuthenticationRepository.instance
               .screenRedirect(AuthenticationRepository.instance.AuthUser);
+
           Get.snackbar('Have a good day', 'Hôm nay MCK ra bài mới đấy');
         }
       }

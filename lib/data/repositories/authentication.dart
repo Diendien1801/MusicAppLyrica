@@ -14,14 +14,14 @@ class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   /// Variables
-  final deviceStorage = GetStorage();
+  
   final _auth = FirebaseAuth.instance;
 
   // Get authenticated user data
   // ignore: non_constant_identifier_names
   User? get AuthUser => _auth.currentUser;
 
-  /// Call from main.dart on app launch
+  
   @override
   void onReady() async {
     super.onReady();
@@ -31,16 +31,20 @@ class AuthenticationRepository extends GetxController {
 
   screenRedirect(User? user) async {
     final playlistController = Get.put(PlaylistController());
-    await playlistController.fetchPlaylists();
-    await playlistController.fetchMyPlaylists(user!.uid);
-    await TrackViewController.to.fetchSongs();
-    // Local storage
+    
+    // Check if user is logged in
     if (user != null) {
       if (user.emailVerified) {
+        await playlistController.fetchPlaylists();
+
+        await TrackViewController.to.fetchSongs();
+        await playlistController.fetchMyPlaylists(user!.uid);
+        FullScreenLoader.stopLoading();
         Get.offAll(() => NavigationMenu());
       } else {
         Get.to(() => VerificationScreen());
       }
+      // If user is not logged in
     } else {
       FullScreenLoader.openIntro('assets/animations/introvip1.json');
       //stop 1 s

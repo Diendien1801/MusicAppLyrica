@@ -10,46 +10,59 @@ class MySearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 50,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: const Color.fromRGBO(106, 53, 219, 0.85),
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: TextField(
-            controller: searchingController.searchEditController,
-            onTap: () {
-              searchingController.changeShowListView();
-             
-            },
-            onEditingComplete: () {
-              searchingController.changeShowListView();
-              FocusScope.of(context).unfocus();
-            },
-            onChanged: (value) {
-              if (searchingController.searchEditController.text.isEmpty) {
-                searchingController.searchSongList.clear();
-              }
-              searchingController.getNames();
-            },
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
-            decoration: const InputDecoration(
-              enabledBorder: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 12),
-              hintText: 'Search ',
-              hintStyle: TextStyle(
+        ShaderMask(
+          shaderCallback: (Rect bounds) {
+            return const LinearGradient(
+              colors: [
+                Color.fromRGBO(106, 53, 219, 1),
+                Color.fromRGBO(195, 71, 216, 1),
+              ],
+              tileMode: TileMode.mirror,
+            ).createShader(bounds);
+          },
+          child: Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(
                 color: Colors.white,
-                fontSize: 14,
+                width: 1,
               ),
-              prefixIcon: Icon(
-                Icons.search,
+            ),
+            child: TextField(
+              controller: searchingController.searchEditController,
+              onTap: () {
+                searchingController.changeShowListView();
+              },
+              onEditingComplete: () {
+                searchingController.changeShowListView();
+                FocusScope.of(context).unfocus();
+              },
+              onChanged: (value) {
+                if (searchingController.searchEditController.text.isEmpty) {
+                  searchingController.searchSongList.clear();
+                }
+                searchingController.getNames();
+              },
+              style: const TextStyle(
                 color: Colors.white,
-                size: 20,
+                fontSize: 16,
+              ),
+              decoration: const InputDecoration(
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 12),
+                hintText: 'Search ',
+                hintStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                  size: 20,
+                ),
               ),
             ),
           ),

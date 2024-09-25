@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:lyrica_ver2/features/authentication/controllers/login/login_controller.dart';
 
 import 'package:lyrica_ver2/features/authentication/screens/reset_pass_screen.dart';
+import 'package:lyrica_ver2/utils/constants/sizes.dart';
 import 'package:lyrica_ver2/utils/validators/validator_text_form.dart';
 
 class MainLoginScreen extends StatelessWidget {
@@ -17,16 +18,22 @@ class MainLoginScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            color: Color.fromRGBO(13, 3, 25, 1),
+          height: TSizes.screenHeight,
+          width: TSizes.screenWidth,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/loginBackground.jpg'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.4), BlendMode.darken)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // Back
               Container(
-                margin: const EdgeInsets.only(top: 50, left: 24),
+                margin: const EdgeInsets.only(top: 50, left: 24, bottom: 150),
                 child: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -38,22 +45,7 @@ class MainLoginScreen extends StatelessWidget {
                   },
                 ),
               ),
-              // LOGO
-              Center(
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  margin: const EdgeInsets.only(top: 50, bottom: 50),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(50),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/logos/main_logo.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+
               // WELCOME
               Container(
                 margin: const EdgeInsets.only(left: 24),
@@ -107,7 +99,8 @@ class MainLoginScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: const Color.fromRGBO(133, 128, 167, 1),
+                                        color: const Color.fromRGBO(
+                                            133, 128, 167, 1),
                                       ),
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
@@ -171,8 +164,8 @@ class MainLoginScreen extends StatelessWidget {
                                         .textTheme
                                         .bodyMedium!
                                         .apply(
-                                          color:
-                                              const Color.fromRGBO(133, 128, 167, 1),
+                                          color: const Color.fromRGBO(
+                                              133, 128, 167, 1),
                                         ),
                                     enabledBorder: const UnderlineInputBorder(
                                       borderSide:

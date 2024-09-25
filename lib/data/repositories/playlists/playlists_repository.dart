@@ -7,7 +7,7 @@ class PlaylistsRepository extends GetxController {
   static PlaylistsRepository get to => Get.find();
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // fetch playlists with name
+  // fetch playlists with ID
   Future<PlaylistModel> fetchPlaylistWithID(String id) async {
     try {
       final querySnapshot = await _db.collection('playlists').doc(id).get();
@@ -18,6 +18,7 @@ class PlaylistsRepository extends GetxController {
             document['songs'].map((e) => SongModel.fromJson(e)).toList()),
         stt: document['stt'],
         id: document['id'],
+        coverImage: document['coverImage'],
       );
       return playlist;
     } catch (e) {

@@ -252,7 +252,9 @@ class PersonalScreen extends StatelessWidget {
                                     const EdgeInsets.only(right: 10, top: 10),
                                 child: SongCoverHorizontal(
                                     song: TrackViewController
-                                        .to.songList[index1 * 3 + index2]),
+                                        .to.songList[index1 * 3 + index2],
+                                        ),
+                                    
                               );
                             },
                           ),
@@ -400,10 +402,29 @@ class PersonalScreen extends StatelessWidget {
                                                     106, 53, 219, 1),
                                               ),
                                             ),
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/logo_intro.png'),
-                                              fit: BoxFit.cover,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: CachedNetworkImage(
+                                              imageUrl: PlaylistController.to
+                                                  .myPlaylist[index].coverImage,
+                                              placeholder: (context, url) =>
+                                                  ShimmerEffect(
+                                                      height: 400, width: 400),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      const Icon(Icons.error),
+                                              imageBuilder:
+                                                  (context, imageProvider) =>
+                                                      Container(
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: imageProvider,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),

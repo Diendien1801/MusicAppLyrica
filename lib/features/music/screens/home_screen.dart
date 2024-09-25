@@ -9,6 +9,7 @@ import 'package:lyrica_ver2/features/authentication/controllers/avatar/avatar_co
 import 'package:lyrica_ver2/features/music/controllers/artist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/playlist_controller.dart';
 import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
+import 'package:lyrica_ver2/features/personalization/controllers/user_controller.dart';
 import 'package:lyrica_ver2/features/personalization/screens/personal.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 import 'package:lyrica_ver2/utils/constants/sizes.dart';
@@ -18,24 +19,33 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final userController = Get.put(UserController());
+    final userController = Get.put(UserController());
     final artistController = Get.put(ArtistController());
-    //final playlistController = Get.put(PlaylistController());
 
-    TrackViewController.to.updateSongList(TrackViewController.to.songList);
-    final currentSongName = TrackViewController.to.currentSongName.value;
-    int songIndex = TrackViewController.to.currentSongList.indexWhere(
-      (song) => song.songName == currentSongName,
-    );
-    songIndex = songIndex == -1 ? 0 : songIndex;
-    TrackViewController.to.setIndex(songIndex);
-    final currentSongList = TrackViewController.to.currentSongList;
+    // Update current Song List Play
+    //TrackViewController.to
+    //    .updateCurrentSongListPlay(TrackViewController.to.songList);
+
+    // Update current Song List use to display
+    //TrackViewController.to.updateSongList(TrackViewController.to.songList);
+    //final currentSongName = TrackViewController.to.currentSongName.value;
+    // Set index of current song
+    //int songIndex = TrackViewController.to.songList.indexWhere(
+    //  (song) => song.songName == currentSongName,
+    //);
+    //if (songIndex == -1) {
+    //  songIndex = 0;
+    //}
+    // TrackViewController.to.setIndex(songIndex);
+    TrackViewController.to.setPreIndex(-1); // -> avoid the case that play the third song in album and then play the third song in the home screen
+    final songList = TrackViewController.to.songList;
     return Scaffold(
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Container(
-              decoration: const BoxDecoration(color: TColors.primaryBackground),
+              decoration:
+                  const BoxDecoration(color: Color.fromARGB(255, 29, 14, 45)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -158,8 +168,9 @@ class HomeScreen extends StatelessWidget {
                           itemCount: 5,
                           itemBuilder: (context, index) {
                             return Obx(
-                              () => SongCoverVertical(
-                                  song: currentSongList[index + 3]),
+                              // currentSongList nay` la` all List
+                              () =>
+                                  SongCoverVertical(song: songList[index + 3]),
                             );
                           },
                         ),

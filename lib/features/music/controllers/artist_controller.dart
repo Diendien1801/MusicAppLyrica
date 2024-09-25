@@ -5,7 +5,10 @@ import 'package:lyrica_ver2/data/repositories/authentication.dart';
 
 class ArtistController extends GetxController {
   static ArtistController get to => Get.find<ArtistController>();
+
   final artistRepository = Get.put(ArtistRepository());
+
+  // Variables
   RxList<ArtistModel> artists = <ArtistModel>[].obs;
   Rx<String> currentArtistName = ''.obs;
   @override

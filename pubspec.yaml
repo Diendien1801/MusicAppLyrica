@@ -27,6 +27,9 @@ dependencies:
   string_similarity: ^2.1.1
   shared_preferences: ^2.2.3
   url_launcher: ^6.3.0
+  firebase_database: ^10.5.7
+  
+  
   
   
   

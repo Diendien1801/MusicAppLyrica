@@ -12,16 +12,24 @@ import 'package:lyrica_ver2/utils/helpers/helpers.dart';
 // ignore: must_be_immutable
 class SongCoverHorizontal extends SongCover {
   SongModel song;
-
+  bool? isFromPlaylist;
   @override
   void navigateToTrackViewScreen() {
     final controller = TrackViewController.to;
+    // check if the song is from playlist -> click a song in playlist -> update current song list play
+    if (isFromPlaylist == true) {
+      controller.updateCurrentSongListPlay(controller.currentSongList);
+    } else {
+      controller.updateCurrentSongListPlay(controller.songList);
+    }
     var songName = song.songName;
-    var index =
-        controller.currentSongList.indexWhere((s) => s.songName == songName);
+    var index = controller.currentSongListPlay
+        .indexWhere((s) => s.songName == songName);
     controller.setIndex(index);
-    
+
+    // check if the song is not the same as the previous song
     if (controller.indexSong.value != controller.preIndexSong.value) {
+      // check if the player is playing -> stop the player
       if (controller.player.state == PlayerState.playing) {
         controller.player.stop();
         controller.playButton.value = false;
@@ -34,7 +42,7 @@ class SongCoverHorizontal extends SongCover {
     TrackViewController.to.currentSongName.value = song.songName;
   }
 
-  SongCoverHorizontal({required this.song});
+  SongCoverHorizontal({required this.song, this.isFromPlaylist = false});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -54,7 +62,8 @@ class SongCoverHorizontal extends SongCover {
                     imageUrl: song.coverImage,
                     placeholder: (context, url) =>
                         ShimmerEffect(height: 50, width: 50),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(

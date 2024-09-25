@@ -23,12 +23,13 @@ class GroupOfPlayList extends StatelessWidget {
                 Get.to(() => RecentListenScreen(
                       playlistName:
                           PlaylistController.to.playlist[itemStart].name,
+                      
                     ));
               },
               child: PlaylistCard(
                 height: 300,
                 width: 180,
-                image: 'assets/images/playlists/play${itemStart + 1}.png',
+                image: PlaylistController.to.playlist[itemStart].coverImage,
                 name: PlaylistController.to.playlist[itemStart].name,
               ),
             ),
@@ -41,12 +42,13 @@ class GroupOfPlayList extends StatelessWidget {
                 Get.to(() => RecentListenScreen(
                       playlistName:
                           PlaylistController.to.playlist[itemStart + 1].name,
+                      
                     ));
               },
               child: PlaylistCard(
                 height: 120,
                 width: 180,
-                image: 'assets/images/playlists/play${itemStart + 2}.png',
+                image: PlaylistController.to.playlist[itemStart + 1].coverImage,
                 name: PlaylistController.to.playlist[itemStart + 1].name,
               ),
             ),
@@ -59,12 +61,13 @@ class GroupOfPlayList extends StatelessWidget {
                 Get.to(() => RecentListenScreen(
                       playlistName:
                           PlaylistController.to.playlist[itemStart + 2].name,
+                      
                     ));
               },
               child: PlaylistCard(
                 height: 120,
                 width: 180,
-                image: 'assets/images/playlists/play${itemStart + 3}.png',
+                image: PlaylistController.to.playlist[itemStart + 2].coverImage,
                 name: PlaylistController.to.playlist[itemStart + 2].name,
               ),
             ),
@@ -77,12 +80,13 @@ class GroupOfPlayList extends StatelessWidget {
                 Get.to(() => RecentListenScreen(
                       playlistName:
                           PlaylistController.to.playlist[itemStart + 3].name,
+                      
                     ));
               },
               child: PlaylistCard(
                 height: 300,
                 width: 180,
-                image: 'assets/images/playlists/play${itemStart + 4}.png',
+                image: PlaylistController.to.playlist[itemStart + 3].coverImage,
                 name: PlaylistController.to.playlist[itemStart + 3].name,
               ),
             ),

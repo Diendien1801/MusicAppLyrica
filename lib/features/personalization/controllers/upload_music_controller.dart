@@ -39,7 +39,8 @@ class UpLoadMusicController extends GetxController {
       // if (!upLoadFormKey.currentState!.validate()) {
       //   return;
       // }
-
+       FullScreenLoader.openLoadingDialog(
+          'Loading...', 'assets/animations/141594-animation-of-docer.json');
       final result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: [
@@ -48,14 +49,15 @@ class UpLoadMusicController extends GetxController {
           
         ], // Chỉ định các định dạng file âm thanh
       );
+      
       if (result == null) return;
+     
       final path = result.files.single.path;
       final file = File(path!);
       //up load file to firebase storage
       final fileName = file.path;
       final destination = 'files/$fileName';
-      FullScreenLoader.openLoadingDialog(
-          'Loading...', 'assets/animations/141594-animation-of-docer.json');
+      
       final task = FirebaseApi.uploadFile(destination, file);
       final snapshot = await task?.whenComplete(() {});
       final urlDownload = await snapshot?.ref.getDownloadURL();

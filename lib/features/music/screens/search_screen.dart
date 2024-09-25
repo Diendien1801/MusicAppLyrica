@@ -7,6 +7,8 @@ import 'package:lyrica_ver2/common/widgets/search/search_bar.dart';
 import 'package:lyrica_ver2/common/widgets/song_cover/song_cover_horizontal.dart';
 import 'package:lyrica_ver2/common/widgets/special/group_of_playlist.dart';
 import 'package:lyrica_ver2/features/music/controllers/search_controller.dart';
+import 'package:lyrica_ver2/features/music/controllers/track_view_controller.dart';
+import 'package:lyrica_ver2/features/music/screens/track_view_screen.dart';
 import 'package:lyrica_ver2/utils/constants/colors.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -98,6 +100,7 @@ class SearchScreen extends StatelessWidget {
                                               child: SongCoverHorizontal(
                                                 song: searchController
                                                     .searchSongList[index],
+                                                
                                               ),
                                             );
                                           },

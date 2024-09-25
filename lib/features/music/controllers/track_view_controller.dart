@@ -9,15 +9,21 @@ class TrackViewController extends GetxController {
   RxBool isFav = false.obs;
   RxBool isRepeat = true.obs;
   AudioPlayer player = AudioPlayer();
+
   var duration = const Duration().obs;
   var position = const Duration().obs;
   var popUp = false.obs;
+
+  // all songs
   RxList<SongModel> songList = <SongModel>[].obs;
   var indexSong = 0.obs;
   final songRepository = Get.find<MusicRepository>();
   var preIndexSong = 0.obs;
 
+  // current song list -> display
   RxList<SongModel> currentSongList = <SongModel>[].obs;
+  // current song list -> play
+  RxList<SongModel> currentSongListPlay = <SongModel>[].obs;
   RxList<SongModel> mySongList = <SongModel>[].obs;
   Rx<String> currentSongName = ''.obs;
 
@@ -34,15 +40,12 @@ class TrackViewController extends GetxController {
       mySongList.assignAll(songs.where((element) {
         return element.isChecked == true && (element.userId == uid);
       }));
-
-     
     } catch (e) {
-     throw Exception('Error fetching songs: $e');
+      throw Exception('Error fetching songs: $e');
     }
   }
 
   void updateSongList(List<SongModel> songList) {
-    
     currentSongList.assignAll(songList);
   }
 
@@ -57,7 +60,7 @@ class TrackViewController extends GetxController {
   @override
   void onInit() async {
     await fetchSongs();
-    
+
     player.onDurationChanged.listen((event) {
       duration.value = event;
     });
@@ -73,13 +76,12 @@ class TrackViewController extends GetxController {
     if (player.state == PlayerState.stopped) {
       playButton.value = false;
     }
-    
+
     super.onInit();
   }
 
   Future<void> fetchSongs() async {
     try {
-      
       List<SongModel> songs = await songRepository.fetchSongDetails();
       songList.assignAll(songs.where((element) => element.isChecked == true));
     } catch (e) {
@@ -119,7 +121,9 @@ class TrackViewController extends GetxController {
   }
 
   play(String url) async {
+    // set source
     await player.play(UrlSource(url));
+    // Listen to player state
     player.onPlayerStateChanged.listen((playerState) {
       if (playerState == PlayerState.completed && isRepeat.value == false) {
         next();
@@ -152,7 +156,7 @@ class TrackViewController extends GetxController {
   }
 
   void next() {
-    if (indexSong.value < currentSongList.length - 1) {
+    if (indexSong.value < currentSongListPlay.length - 1) {
       indexSong.value++;
       player.stop();
       playButton.value = false;
@@ -171,9 +175,16 @@ class TrackViewController extends GetxController {
     }
   }
 
+  void updateCurrentSongListPlay(List<SongModel> songList) {
+    currentSongListPlay.assignAll(songList);
+  }
+
   inItPlayer() {
+    // Initialize player 
     player = AudioPlayer();
-    player.setSource(UrlSource(currentSongList[indexSong.value].url));
+    
+    player.setSource(UrlSource(currentSongListPlay[indexSong.value].url));
+    // Listen to player state
     player.onDurationChanged.listen((event) {
       duration.value = event;
     });

@@ -10,9 +10,9 @@ class NavigationController extends GetxController {
   var selectedIndex = 0.obs;
 
   final List<Widget> screens = [
-    HomeScreen(),
+    const HomeScreen(),
     SearchScreen(),
-    AlbumScreen(),
-    PremiumScreen(),
+    const AlbumScreen(),
+    const PremiumScreen(),
   ];
 }

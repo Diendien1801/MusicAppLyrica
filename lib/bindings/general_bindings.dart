@@ -9,8 +9,7 @@ class GeneralBindings extends Bindings {
   @override
   void dependencies() {
     //Get.put(UserController());
-    Get.put(ArtistRepository());
-    
+    Get.put(ArtistRepository());  
     Get.put(MusicRepository());
     Get.put(TrackViewController());
     Get.put(PlaylistsRepository());

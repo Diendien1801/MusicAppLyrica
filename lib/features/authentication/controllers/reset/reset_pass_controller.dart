@@ -11,6 +11,8 @@ class ResetPassController extends GetxController {
 
   Future<void> resetPassword() async {
     try {
+
+      // show loading dialog
       FullScreenLoader.openLoadingDialog(
           'Logging you in...', 'assets/animations/lyrica.json');
       if (!formKey.currentState!.validate()) {
@@ -18,9 +20,14 @@ class ResetPassController extends GetxController {
         return;
       }
 
+      // stop time 1s
       await Future.delayed(const Duration(milliseconds: 1300));
+
+      // reset password
       await AuthenticationRepository.instance
           .resetPassword(emailController.text.trim());
+
+      // stop loading and navigate to password change successfully screen
       FullScreenLoader.stopLoading();
       Get.to(() => PasswordChangeSuccessfullyScreen());
     } catch (e) {

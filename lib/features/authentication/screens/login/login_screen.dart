@@ -15,26 +15,17 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            color: Color.fromRGBO(13, 3, 25, 1),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/loginBackground.jpg'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.6), BlendMode.darken)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // LOGO
-              Container(
-                height: 100,
-                width: 100,
-                margin: const EdgeInsets.only(top: 200, bottom: 50),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(50),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/logos/main_logo.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
               // Button
               Center(
                 child: LoginButtonSocial(

@@ -16,7 +16,7 @@ class VerifyEmailController extends GetxController {
 
     super.onInit();
   }
-
+  // send email verification
   sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
@@ -25,14 +25,23 @@ class VerifyEmailController extends GetxController {
     }
   }
 
+  // set timer for auto redirect
   setTimerForAutoRedirect() {
+    
     Timer.periodic(const Duration(seconds: 1), (timer) async {
+      // reload user's data -> get latest data
       await FirebaseAuth.instance.currentUser!.reload();
       final user = FirebaseAuth.instance.currentUser;
+      // check if email is verified
+      // if email is null -> false
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.snackbar('Thank you', 'Your email has been verified');
         Get.off(() => CreateAccountSuccessScreen());
+      }
+      else {
+        // if email is not verified
+        Get.snackbar('Notice', 'Your email has not been verified yet');
       }
     });
   }
