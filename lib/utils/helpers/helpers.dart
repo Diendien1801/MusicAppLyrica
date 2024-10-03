@@ -110,7 +110,7 @@ class THelperFunctions {
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   onTap: () {
-                                    PlaylistController.to.playlist[index].songs
+                                    PlaylistController.to.myPlaylist[index].songs
                                         .add(song);
 
                                     PlaylistController.to.updatePlaylist(
