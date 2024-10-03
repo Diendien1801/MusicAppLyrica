@@ -106,7 +106,7 @@ class THelperFunctions {
                             height: 300,
                             width: double.maxFinite,
                             child: ListView.builder(
-                              itemCount: PlaylistController.to.playlist.length,
+                              itemCount: PlaylistController.to.myPlaylist.length,
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   onTap: () {
@@ -121,7 +121,7 @@ class THelperFunctions {
                                     Navigator.pop(context);
                                     Navigator.pop(context);
                                     Get.snackbar(
-                                        'Successfully added ${PlaylistController.to.playlist[index].name} ',
+                                        'Successfully added ${PlaylistController.to.myPlaylist[index].name} ',
                                         'Check your playlist now!');
                                   },
                                   child: Container(
@@ -143,7 +143,7 @@ class THelperFunctions {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(PlaylistController
-                                            .to.playlist[index].name),
+                                            .to.myPlaylist[index].name),
                                       ],
                                     ),
                                   ),
